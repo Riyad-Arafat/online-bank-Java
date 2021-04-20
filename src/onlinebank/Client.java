@@ -2,7 +2,7 @@ package onlinebank;
 
 public class Client {
 	protected String name;
-	protected String nationalID;
+	protected String nationalID = "00000000000000";
 	protected String phone;
 	protected String address;
 	protected Account account;
@@ -20,12 +20,12 @@ public class Client {
 	}
 
 	public void setNationalID(String nationalID) {
-		this.nationalID = nationalID;
-		// if (nationalID == "1") {
+		if (nationalID.length() != 14) {
+			System.out.println("ID not correct");
 
-		// } else {
-		// System.out.println("ID not correct");
-		// }
+		} else {
+			this.nationalID = nationalID;
+		}
 
 	}
 
@@ -62,27 +62,24 @@ public class Client {
 			account_returned = account.toString();
 
 		}
-		return "Client = {\nName = " + name + "\nNational ID =" + nationalID + "\nPhone = " + phone + "\nAddress = "
+		return "Client = {\nName = " + name + "\nNational ID = " + nationalID + "\nPhone = " + phone + "\nAddress = "
 				+ address + "\n" + account_returned + "\n}";
 	}
 
 	public Client() {
 		name = "No Name";
-		nationalID = "No ID";
 		phone = "No Phone ";
 		address = "No Address";
 		account = null;
 
 	}
 
-	public Client(String n, String naID, String ph, String add, Account acc) {
-
-		name = n;
-		nationalID = naID;
-		phone = ph;
-		address = add;
-		account = acc;
-
+	public Client(String clientName, String naID, String clientPhone, String clienAddress, Account clienAccount) {
+		setName(clientName);
+		setNationalID(naID);
+		setPhone(clientPhone);
+		setAddress(clienAddress);
+		setAccount(clienAccount);
 	}
 
 }

@@ -21,8 +21,8 @@ public class CommercialClient extends Client {
 			account_returned = account.toString();
 
 		}
-		return "Client = {" + "\nCommercial ID = " + commercialID + "\nName = " + name + "\nNational ID = " + nationalID
-				+ "\nPhone = " + phone + "\nAddress = " + address + "\n" + account_returned + "\n}";
+		return "Client = {" + "\nCommercial ID = " + commercialID + "\nName = " + name + "\nPhone = " + phone
+				+ "\nAddress = " + address + "\n" + account_returned + "\n}";
 
 	}
 
@@ -35,7 +35,10 @@ public class CommercialClient extends Client {
 	public CommercialClient(int commlID, String clientName, String naID, String clientPhone, String clienAddress,
 			Account clienAccount) {
 
-		super(clientName, naID, clientPhone, clienAddress, clienAccount);
+		setName(clientName);
+		setPhone(clientPhone);
+		setAddress(clienAddress);
+		setAccount(clienAccount);
 		commercialID = commlID;
 
 	}
