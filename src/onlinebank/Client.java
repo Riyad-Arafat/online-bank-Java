@@ -62,8 +62,8 @@ public class Client {
 			account_returned = account.toString();
 
 		}
-		return "Client = {\nName = " + name + "\nNational ID = " + nationalID + "\nPhone = " + phone + "\nAddress = "
-				+ address + "\n" + account_returned + "\n}";
+		return "Name = " + name + "\nNational ID = " + nationalID + "\nPhone = " + phone + "\nAddress = " + address
+				+ "\n" + account_returned;
 	}
 
 	public Client() {

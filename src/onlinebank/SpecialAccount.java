@@ -6,7 +6,7 @@ package onlinebank;
  */
 public class SpecialAccount extends Account {
 
-    public SpecialAccount(float balance, int accountNumber) {
+    public SpecialAccount(float balance, String accountNumber) {
         super(balance, accountNumber);
     }
 

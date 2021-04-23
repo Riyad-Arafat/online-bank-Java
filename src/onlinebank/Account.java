@@ -7,14 +7,16 @@ package onlinebank;
 
 public class Account {
     protected float balance;
-    private int accountNumber;
+    private String accountNumber;
 
-    public Account(float balance, int accountNumber) {
+    public Account(float balance, String accountNumber) {
         this.balance = balance;
         this.accountNumber = accountNumber;
     }
 
     public Account() {
+        this.balance = 0;
+        this.accountNumber = "null";
     }
 
     public float getBalance() {
@@ -25,17 +27,17 @@ public class Account {
         this.balance = balance;
     }
 
-    public int getAccountNumber() {
+    public String getAccountNumber() {
         return accountNumber;
     }
 
-    public void setAccountNumber(int accountNumber) {
+    public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
 
     @Override
     public String toString() {
-        return "Account{" + "balance = " + balance + ", Account_Number = " + accountNumber + '}';
+        return "Account_Number = " + accountNumber + "\n" + "balance = " + balance;
     }
 
     public void deposit(float amount) {
