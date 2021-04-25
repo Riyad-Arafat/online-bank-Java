@@ -1,6 +1,7 @@
 package onlinebank;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -68,6 +69,53 @@ public class Bank {
       out = "There are no Accounts";
     }
     return out;
+  }
+
+  public void createClient() {
+    Scanner input = new Scanner(System.in);
+    String name;
+    String addres;
+    String nationId;
+    String phone;
+
+    System.out.println("Enter the Client Name");
+    name = input.nextLine();
+    System.out.println("Enter the Client Address");
+    addres = input.nextLine();
+
+    System.out.println("Enter the Client NationID");
+    nationId = input.nextLine();
+
+    System.out.println("Enter the Client Phone");
+    phone = input.nextLine();
+
+    Client client = new Client(name, nationId, phone, addres, createAccount());
+    addClient(client);
+
+  }
+
+  public Account createAccount() {
+    Scanner input = new Scanner(System.in);
+    float balance;
+    String accountNum;
+    Account account;
+
+    System.out.println("Enter the Account Number");
+    accountNum = input.nextLine();
+
+    System.out.println("Enter the Account balnce");
+    balance = input.nextFloat();
+
+    System.out.println("is it a Special Account !? (1 or 0)");
+    if (input.nextInt() == 1) {
+      account = new SpecialAccount(balance, accountNum);
+    } else {
+      account = new Account(balance, accountNum);
+
+    }
+    addAccount(account);
+    return account;
+
   }
 
   public void setName(String bankName) {

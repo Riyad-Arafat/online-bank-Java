@@ -32,7 +32,7 @@ public class App {
 
         while (option != 0) {
             if (option == 1) {
-                createClient();
+                this.bank.createClient();
             } else if (option == 2) {
                 System.out.println(this.bank.displayClients());
             } else if (option == 3) {
@@ -52,50 +52,4 @@ public class App {
         System.out.println("Quit ( 0 )");
     }
 
-    public void createClient() {
-        Scanner input = new Scanner(System.in);
-        String name;
-        String addres;
-        String nationId;
-        String phone;
-
-        System.out.println("Enter the Client Name");
-        name = input.nextLine();
-        System.out.println("Enter the Client Address");
-        addres = input.nextLine();
-
-        System.out.println("Enter the Client NationID");
-        nationId = input.nextLine();
-
-        System.out.println("Enter the Client Phone");
-        phone = input.nextLine();
-
-        Client client = new Client(name, nationId, phone, addres, createAccount());
-        this.bank.addClient(client);
-
-    }
-
-    public Account createAccount() {
-        Scanner input = new Scanner(System.in);
-        float balance;
-        String accountNum;
-        Account account;
-
-        System.out.println("Enter the Account Number");
-        accountNum = input.nextLine();
-
-        System.out.println("Enter the Account balnce");
-        balance = input.nextFloat();
-
-        System.out.println("is it a Special Account !? (1 or 0)");
-        if (input.nextInt() == 1) {
-            account = new SpecialAccount(balance, accountNum);
-        } else {
-            account = new Account(balance, accountNum);
-
-        }
-        this.bank.addAccount(account);
-        return account;
-
-    }
 }
