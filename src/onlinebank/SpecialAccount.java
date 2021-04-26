@@ -19,16 +19,16 @@ public class SpecialAccount extends Account {
         if (amount > this.balance) {
             if (this.balance - amount >= -1000) {
                 this.balance = this.balance - amount;
-                System.out.println(amount + "withdraw");
-                System.out.println("your balance is = " + balance);
+                System.out.println("\n" + amount + "withdraw");
+                System.out.println("\nyour balance is = " + balance);
             } else {
-                System.out.println("You do not have enough balance ");
-                System.out.println("your balance is = " + balance);
+                System.out.println("\nYou do not have enough balance ");
+                System.out.println("\nyour balance is = " + balance);
             }
         } else {
             this.balance = this.balance - amount;
-            System.out.println(amount + "withdraw");
-            System.out.println("your balance is = " + balance);
+            System.out.println("\n" + amount + "withdraw");
+            System.out.println("\nyour balance is = " + balance);
         }
     }
 

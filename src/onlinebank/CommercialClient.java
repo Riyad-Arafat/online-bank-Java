@@ -1,14 +1,19 @@
 package onlinebank;
 
+/**
+ *
+ * @author Mohamed Anter
+ */
+
 public class CommercialClient extends Client {
 
-	private int commercialID;
+	private String commercialID;
 
-	public int getCommercialID() {
+	public String getCommercialID() {
 		return commercialID;
 	}
 
-	public void setCommercialID(int commercialID) {
+	public void setCommercialID(String commercialID) {
 		this.commercialID = commercialID;
 	}
 
@@ -21,20 +26,18 @@ public class CommercialClient extends Client {
 			account_returned = account.toString();
 
 		}
-		return "Client = {" + "\nCommercial ID = " + commercialID + "\nName = " + name + "\nPhone = " + phone
-				+ "\nAddress = " + address + "\n" + account_returned + "\n}";
+		return "\nCommercial ID = " + commercialID + "\nName = " + name + "\nPhone = " + phone + "\nAddress = "
+				+ address + "\n" + account_returned + "\n}";
 
 	}
 
 	public CommercialClient() {
-
 		super();
-		commercialID = 0;
+		commercialID = "null";
 	}
 
-	public CommercialClient(int commlID, String clientName, String naID, String clientPhone, String clienAddress,
+	public CommercialClient(String commlID, String clientName, String clientPhone, String clienAddress,
 			Account clienAccount) {
-
 		setName(clientName);
 		setPhone(clientPhone);
 		setAddress(clienAddress);

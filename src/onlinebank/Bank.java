@@ -45,7 +45,7 @@ public class Bank {
   }
 
   public String displayClients() {
-    String out = "";
+    String out = "\n";
     if (clients.size() > 0) {
       for (var clint : clients) {
         out += clint.toString() + "\n";
@@ -58,7 +58,7 @@ public class Bank {
   }
 
   public String displayAccounts() {
-    String out = "";
+    String out = "\n";
     if (accounts.size() > 0) {
       for (var account : accounts) {
 
@@ -77,19 +77,29 @@ public class Bank {
     String addres;
     String nationId;
     String phone;
-
-    System.out.println("Enter the Client Name");
+    Client client;
+    System.out.println("\nEnter the Client Name");
     name = input.nextLine();
-    System.out.println("Enter the Client Address");
+    System.out.println("\nEnter the Client Address");
     addres = input.nextLine();
 
-    System.out.println("Enter the Client NationID");
+    System.out.println("\nEnter the Client NationID");
     nationId = input.nextLine();
 
-    System.out.println("Enter the Client Phone");
+    System.out.println("\nEnter the Client Phone");
     phone = input.nextLine();
+    System.out.println("\nIs a Commercial Client !!? ( 1 or 0 )");
+    if (input.nextInt() == 1) {
+      System.out.println("\nEnter the Commercial ID");
+      nationId = input.nextLine();
+      client = new CommercialClient(nationId, name, phone, addres, createAccount());
+    } else {
+      System.out.println("\nEnter the Client NationID");
+      nationId = input.nextLine();
+      client = new Client(name, nationId, phone, addres, createAccount());
 
-    Client client = new Client(name, nationId, phone, addres, createAccount());
+    }
+
     addClient(client);
 
   }
@@ -100,13 +110,21 @@ public class Bank {
     String accountNum;
     Account account;
 
-    System.out.println("Enter the Account Number");
+    System.out.println("\nEnter the Account Number");
     accountNum = input.nextLine();
 
-    System.out.println("Enter the Account balnce");
-    balance = input.nextFloat();
+    while (true) {
+      System.out.println("\nEnter the Account balnce");
+      try {
+        balance = input.nextFloat();
+        break;
+      } catch (Exception e) {
+        System.out.println("Invalid input. ");
+        input.next();
+      }
+    }
 
-    System.out.println("is it a Special Account !? (1 or 0)");
+    System.out.println("\nis it a Special Account !? (1 or 0)");
     if (input.nextInt() == 1) {
       account = new SpecialAccount(balance, accountNum);
     } else {
@@ -136,6 +154,19 @@ public class Bank {
 
   public void addClient(Client client) {
     this.clients.add(client);
+  }
+
+  public Client getClient(int id) {
+    if (clients.size() > 0) {
+      for (var client : clients) {
+        if (client.getId() == id)
+          return client;
+      }
+    } else {
+      System.out.println("There are no CLints");
+      return null;
+    }
+    return null;
   }
 
 }
