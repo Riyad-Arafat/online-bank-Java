@@ -75,33 +75,48 @@ public class Bank {
     Scanner input = new Scanner(System.in);
     String name;
     String addres;
-    String nationId;
+    String nationId = null;
     String phone;
     Client client;
+    int clientType;
+
     System.out.println("\nEnter the Client Name");
     name = input.nextLine();
     System.out.println("\nEnter the Client Address");
     addres = input.nextLine();
 
-    System.out.println("\nEnter the Client NationID");
-    nationId = input.nextLine();
-
     System.out.println("\nEnter the Client Phone");
     phone = input.nextLine();
-    System.out.println("\nIs a Commercial Client !!? ( 1 or 0 )");
-    if (input.nextInt() == 1) {
-      System.out.println("\nEnter the Commercial ID");
-      nationId = input.nextLine();
+
+    while (true) {
+      System.out.println("\nIs a Commercial Client !!? ( 1 or 0 )");
+      try {
+        clientType = input.nextInt();
+        if (clientType == 1) {
+          System.out.println("\nEnter the Commercial ID");
+          nationId = input.next();
+
+        } else if (clientType == 0) {
+          System.out.println("\nEnter the Client NationID");
+          nationId = input.next();
+
+        }
+
+        break;
+      } catch (Exception e) {
+        System.out.println("\nInvalid input.");
+        input.next();
+      }
+    }
+    if (clientType == 1 && nationId != null) {
       client = new CommercialClient(nationId, name, phone, addres, createAccount());
-    } else {
-      System.out.println("\nEnter the Client NationID");
-      nationId = input.nextLine();
+      addClient(client);
+
+    } else if (clientType == 0 && nationId != null) {
       client = new Client(name, nationId, phone, addres, createAccount());
+      addClient(client);
 
     }
-
-    addClient(client);
-
   }
 
   public Account createAccount() {
